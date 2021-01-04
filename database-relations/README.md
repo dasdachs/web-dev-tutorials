@@ -219,7 +219,7 @@ def create_or_get_todos() -> None:
     return response_data
 
 
-@app.route("/users/<user_id>/add-todo", methods=["PUT"])
+@app.route("/users/todo", methods=["PUT"])
 def add_todo(user_id: int) -> None:
     """Add a todo to a user""" 
     user: User = db.query(User).get(int(user_id))
@@ -255,7 +255,7 @@ def add_todo(user_id: int) -> None:
         "todos": todos
     }
     
-    return user_as_dict, 201
+    return user_as_dict
 ```
 
 ### Verifying the api
@@ -270,7 +270,7 @@ $ http POST ":5000/api/v1/user" email="mike@test.si" password="mike"
 HTTP/1.0 201 CREATED
 Content-Length: 58
 Content-Type: application/json
-Date: Mon, 04 Jan 2021 11:47:17 GMT
+Date: Mon, 01 Jan 2021 00:00:00 GMT
 Server: Werkzeug/1.0.1 Python/3.7.3
 
 {
@@ -284,12 +284,12 @@ Server: Werkzeug/1.0.1 Python/3.7.3
 And now assign a todo to him
 
 ```bash
-http PUT ":5000/users/1/add-todo" title="Buy milk" content="But 12 gallons of it"
+http PUT ":5000/users/1/todo" title="Buy milk" content="But 12 gallons of it"
 
-HTTP/1.0 201 CREATED
+HTTP/1.0 200 SUCCESS
 Content-Length: 157
 Content-Type: application/json
-Date: Mon, 04 Jan 2021 11:53:37 GMT
+Date: Mon, 01 Jan 2021 00:00:00 GMT
 Server: Werkzeug/1.0.1 Python/3.7.3
 
 {

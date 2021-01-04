@@ -2,6 +2,18 @@
 
 In this tutorial we will create a simple Todo MVC API with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and [sqlite3](https://sqlite.org/index.html) with two models or tables, Users and Todos with a [one-to-many](https://en.wikipedia.org/wiki/One-to-many_(data_model)) relationship between users and todos.
 
+- [Basic relations](#basic-relations)
+  - [Prerequisites](#prerequisites)
+  - [Tutorial](#tutorial)
+    - [Setup](#setup)
+    - [Project layout](#project-layout)
+    - [Define the models](#define-the-models)
+      - [One to many relationship - basics](#one-to-many-relationship---basics)
+      - [One to many relationship - Python code](#one-to-many-relationship---python-code)
+    - [Flask handlers](#flask-handlers)
+    - [Verifying the api](#verifying-the-api)
+    - [Bonus](#bonus)
+
 ## Prerequisites
 
 This tutorial assumes the following: 

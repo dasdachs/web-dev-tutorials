@@ -4,6 +4,11 @@
 Some additional material for my [SmartNinja](https://www.smartninja.org/) courses.
 
 
+# Table of content
+
+- Databases
+  - [Relations](https://github.com/dasdachs/web-dev-tutorials/tree/master/database-relations)
+
 ## How to read these tutorials
 
 ### Disclaimer 
@@ -60,9 +65,6 @@ If you don't know how to write the missing code, make sure to go through the tut
 Where apis are used the tutorials uses the python cli package [httpie](https://httpie.io/docs) to make HTTP requests. 
 
 You can of course use [postman](https://www.postman.com/) or `curl` or any other application you feel comfortable with.
-
-## Table of content
-
 
 ## Misc
 

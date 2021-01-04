@@ -37,7 +37,7 @@ Create a new project and install the dependencies.
 
 ```bash
 git init
-pip install flask python-dotenv sqla_wrapper pytest
+pip install flask python-dotenv sqla_wrapper
 pip freeze > requirements.txt
 ```
 
@@ -54,7 +54,7 @@ simple-relations
   |- app.db         # sqlite database file
 ```
 
-*Note*: come files and folders might have different names depending in you naming and the IDE/package you are using for to manage you Python virtual environment.
+*Note*: some files and folders might have different names depending in your naming preferences and the IDE/package you are using to manage you Python virtual environment.
 
 ### Define the models
 
@@ -114,7 +114,7 @@ Let's say we have the following tables.
 | 7  | Chair                    |
 | 8  | Harry Potter novelty mug |
 
-To "link" a item to a person the easiest way is to add a column with a reference or a foreign key to the `person` row or entry the item belongs to.
+In order for us to "link" an item to a person the easiest way is to add a column with a reference or a foreign key to the `person` row or entry the item belongs to.
 
 *Items*
 
@@ -124,16 +124,16 @@ To "link" a item to a person the easiest way is to add a column with a reference
 | 2   | Lamp   | 1         |
 | 3   | Laptop | 2         |
 
-Now we know that laptop with id `1` belong to person with id `1` and laptop with id `3` belong to person with id `2`. This simple trick is the gist of SQL relationships. 
+Now we know that item with id `1` belong to person with id `1` and item with id `3` belong to person with id `2`. This simple trick is the gist of SQL relationships. 
 
-Pay special attention to the fact that the *person* table has no knowledge of items, only *items* are "aware" of the persons they belong to. This is important for **two** reasons:
+Pay special attention to the fact that the *person* table has no knowledge of items, only *items* are "aware" of the person they belong to. This is important for **two** reasons:
 
-- relationship are crated on one table only
-- they are created on the table where we have multiple rows with the same reference or foreign key, like we see with our `lamp` that has the same  person_id as item with id `1`
+- relationships are crated on one table only
+- they are created on the table where we have multiple rows with the same reference or foreign key, like we see with our `lamp` item, that has the same `person_id` like item with id `1`
 
 #### One to many relationship - Python code
 
-Now to update our models. The only model we need to update on order to crate a relationship is the `Todo` model.
+Now to update our models. The only model we need to update in order to create a relationship is the `Todo` model.
 
 ```python
 # file: models.py
@@ -149,16 +149,16 @@ class Todo(db.Model):
 
 Before we go on, let's stop here for a second and unpack this last line.
 
-We add a new column to our `Todo` class named `user_id`. The name can be anything you desire, like say `owner`, but `user_id` makes it more understandable.
+We add a new column to our `Todo` class named `user_id`. The name can be anything you desire, for example `owner`, but `user_id` makes it more understandable.
 
 The type of the column is `db.Integer`. The type has to match the type of the column we are referring to, in our case this is the `id` from our `User` model.
 
-Notice that the argument for `db.ForeignKey` is a string and the value is `users.id`. The string is a combination of the **name** of the table and the name of the column - default is the plural name of the model name, e.g. `User` -> `users`, `Todo` -> `todos` or the value you define in the `__tablename__` property of your model. In our case this is `users.id`.
+Notice that the argument for `db.ForeignKey` is a string and the value is `users.id`. The string is a combination of the **name** of the table and the name of the column. The default table name is the plural name of your model name, e.g. `User` -> `users`, `Todo` -> `todos` or the value you define in the `__tablename__` property of your model. In our case this is `users.id`.
 
 
-This is enough to have our relationship set up in our database, but in order to get all `todo` items when we get a `user` we need to get all the todos where the `user_id` is the same as the `id` of the user we are retrieving.
+This is enough to have our relationship set up in our database, but in order to get all `todo` items when we get a `user`, we need to get all the todos where the `user_id` is the same as the `id` of the user we are retrieving.
 
-Lucky for us this is simple thing with `SQLAlchemy`. 
+Lucky for us this is a trivial thing when using `SQLAlchemy`. 
 
 ```python
 # file: models.py
@@ -173,12 +173,11 @@ class User(db.Model):
     todos = db.relationship("Todo")
 ```
 
-What we did here is we added a *virtual* column to our model which is a list of the class we are referring to, in our case the `Todo` class. Now SQLAlchemy will include all the todos that "belong" to a single user or row in our `users` table.
+What we did here is we added a *virtual* column to our model. The column is a `list` of the class instances we are referring to, in our case the `Todo` class. Now SQLAlchemy will include all the todos that "belong" to a single user or row in our `users` table.
 
 ### Flask handlers
 
 Let's create our `api`.
-
 
 ```python
 # file: main.py

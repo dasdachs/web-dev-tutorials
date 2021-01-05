@@ -6,6 +6,8 @@ Some additional material for my [SmartNinja](https://www.smartninja.org/) course
 
 # Table of content
 
+- Api
+  - [Intro to apis](https://github.com/dasdachs/web-dev-tutorials/tree/master/web-apis)
 - Databases
   - [Relations](https://github.com/dasdachs/web-dev-tutorials/tree/master/database-relations)
 

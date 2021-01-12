@@ -23,6 +23,7 @@ This tutorial assumes the following:
 * you are comfortable with setting up a Flask web app
 * you understand what a web API is
 * you are comfortable setting up basic session token authentication 
+* you can create and use a database connection 
 * you are comfortable declaring and using models with [SQLAlchemy wrapper](https://github.com/jpsca/sqla-wrapper).
 * you installed [httpie](https://httpie.io/docs) or [postman](https://www.postman.com/) to try the api routes.
 
@@ -309,7 +310,7 @@ That's it :)
 ### Bonus
 
 * add due date to todos, make sure to serialize the incoming data
-* add incoming data validation by adding class methods to models or by using a library like [pydantic](https://pydantic-docs.helpmanual.io/)
+* add incoming data validation and invalid data error handling by adding class methods to models or by using a library like [pydantic](https://pydantic-docs.helpmanual.io/)
 * add serialization methods to your models, create a helper function or use a library like [flask-marshmallow](https://flask-marshmallow.readthedocs.io/en/latest/)
 * add pagination
 * add reusable 404 responses

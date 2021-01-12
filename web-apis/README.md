@@ -394,7 +394,7 @@ def get_all_or_create_movie():
     return movies
 
 
-@app.route("/api/v1/movies/<movie_id>, methods=["GET", "PUT", "DELETE"])
+@app.route("/api/v1/movies/<movie_id>, methods=["GET", "PATCH", "DELETE"])
 ...
 
 @app.route("/api/v1/movies/<movie_id>/actors/, methods=["GET", "PUT"])
@@ -422,8 +422,6 @@ def get_or_add_actor_to_movie(move_id: str) -> None:
 
 ```
 
-### Verify our movies REST API
-
 ## Additional resources
 
 - https://www.freecodecamp.org/news/what-is-an-api-in-english-please-b880a3214a82/
@@ -435,6 +433,7 @@ def get_or_add_actor_to_movie(move_id: str) -> None:
 
 ## Bonus
 
+* use HTTPie, curl or Postman to test your API
 * add incoming data validation and invalid data error handling by adding class methods to models or by using a library like [pydantic](https://pydantic-docs.helpmanual.io/)
 * create models and store them in a database
 * add serialization methods to your models, create a helper function or use a library like [flask-marshmallow](https://flask-marshmallow.readthedocs.io/en/latest/)
